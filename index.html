@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rentals</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #a7c5eb, #74b9ff); color: #333;">
+
+  <div style="width: 90%; margin: auto; padding: 20px; background: rgba(255, 255, 255, 0.95); border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);">
+    <h1 style="text-align: center; color: #333;">WELCOME TO RIDEX</h1>
+    <p>Welcome to RIDEX, your one-stop destination for affordable and reliable car rentals. Browse our featured cars and rent with ease!</p>
+    
+    <div style="margin-bottom: 20px;">
+      <input type="text" id="search" placeholder="Search for cars..." style="width: calc(100% - 110px); padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+      <button onclick="searchCars()" style="padding: 10px; background-color: #3498db; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Search</button>
+    </div>
+    
+    <h2>Featured Cars</h2>
+    <div id="car-list" style="display: flex; flex-wrap: wrap; gap: 20px;">
+      <div style="border: 1px solid #ddd; padding: 10px; width: calc(33.33% - 20px); border-radius: 10px; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <img src="car-2.jpg" alt="Toyota RAV4" style="width: 100%; height: auto; border-radius: 10px;">
+        <h3 style="font-size: 18px; margin: 10px 0;">Toyota RAV4</h3>
+        <p><strong>$440</strong> / month</p>
+        <button onclick="rentNow('Toyota RAV4', 440)" style="background-color: #3498db; color: #fff; border: none; padding: 10px; cursor: pointer; display: block; text-align: center; margin-top: 10px; border-radius: 5px;">Rent Now</button>
+      </div>
+      <div style="border: 1px solid #ddd; padding: 10px; width: calc(33.33% - 20px); border-radius: 10px; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <img src="car-2.jpg" alt="BMW 3 Series" style="width: 100%; height: auto; border-radius: 10px;">
+        <h3 style="font-size: 18px; margin: 10px 0;">BMW 3 Series</h3>
+        <p><strong>$350</strong> / month</p>
+        <button onclick="rentNow('BMW 3 Series', 350)" style="background-color: #3498db; color: #fff; border: none; padding: 10px; cursor: pointer; display: block; text-align: center; margin-top: 10px; border-radius: 5px;">Rent Now</button>
+      </div>
+      <div style="border: 1px solid #ddd; padding: 10px; width: calc(33.33% - 20px); border-radius: 10px; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <img src="car-2.jpg" alt="Volkswagen T-Cross" style="width: 100%; height: auto; border-radius: 10px;">
+        <h3 style="font-size: 18px; margin: 10px 0;">Volkswagen T-Cross</h3>
+        <p><strong>$400</strong> / month</p>
+        <button onclick="rentNow('Volkswagen T-Cross', 400)" style="background-color: #3498db; color: #fff; border: none; padding: 10px; cursor: pointer; display: block; text-align: center; margin-top: 10px; border-radius: 5px;">Rent Now</button>
+      </div>
+    </div>
+    
+    <h2>About Us</h2>
+    <p>At RIDEX, we believe in making car rentals simple, affordable, and stress-free. With a wide selection of vehicles, transparent pricing, and excellent customer service, we are here to help you hit the road with confidence. Whether you’re planning a road trip, need a car for business, or just require a short-term rental, we’ve got you covered!</p>
+    
+    <div style="background-color: #fff; padding: 20px; margin: 40px 0; border: 1px solid #ddd; border-radius: 10px;">
+      <h2>Contact Us</h2>
+      <p><strong>Email:</strong> naveensupport@ridex.com</p>
+      <p><strong>Phone:</strong> +91 9110346753</p>
+      <p><strong>Address:</strong> 123 RIDEX Lane, Car Bangalore</p>
+      <p>Have questions? Reach out to us anytime. We're here to help!</p>
+    </div>
+  </div>
+  
+  <footer style="background-color: #f4f4f4; padding: 20px; text-align: center;">
+    <p>&copy; 2025 RIDEX. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    function rentNow(carModel, price) {
+      const url = `application.html?carModel=${encodeURIComponent(carModel)}&price=${price}`;
+      window.location.href = url;
+    }
+    
+    function searchCars() {
+      const query = document.getElementById('search').value.toLowerCase();
+      const cars = document.querySelectorAll('.car-card');
+      cars.forEach(car => {
+        const carName = car.querySelector('h3').textContent.toLowerCase();
+        if (carName.includes(query)) {
+          car.style.display = '';
+        } else {
+          car.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
